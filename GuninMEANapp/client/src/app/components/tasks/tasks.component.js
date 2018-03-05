@@ -1,3 +1,7 @@
+// import { Component } from '@angular/core';
+// import { TaskService } from '../../services/task.service';
+// import { Task } from '../../../Task';
+// // import { isDate } from 'util';
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -8,32 +12,64 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+// @Component({
+//   moduleId: module.id,
+//   selector: 'tasks',
+//   templateUrl: `tasks.component.html`,
+// })
+// export class TasksComponent {
+//   tasks: Task[];
+//   title: string;
+//   constructor(private taskService: TaskService) {
+//     this.taskService.getTasks()
+//       .subscribe(tasks => {
+//         // console.log(tasks);
+//         this.tasks = tasks;
+//       });
+//   }
+//   addTask(event) {
+//     event.preventDefault();
+//     var newTasks = {
+//       title: this.title,
+//       isDone: false
+//     }
+//     // this.tasks.push(newTasks); -> shows up but disappers on reload
+//     this.taskService.addTask(newTask)
+//       .subscribe(task => {
+//         this.tasks.push(task);
+//         this.title = '';
+//       });
+//   }
+// }
 var core_1 = require('@angular/core');
 var task_service_1 = require('../../services/task.service');
-// import { isDate } from 'util';
 var TasksComponent = (function () {
     function TasksComponent(taskService) {
         var _this = this;
         this.taskService = taskService;
         this.taskService.getTasks()
             .subscribe(function (tasks) {
-            // console.log(tasks);
             _this.tasks = tasks;
         });
     }
     TasksComponent.prototype.addTask = function (event) {
+        var _this = this;
         event.preventDefault();
-        var newTaks = {
+        var newTask = {
             title: this.title,
             isDone: false
         };
-        // this.tasks.push(newTaks); -> shows up but disappers on reload
+        this.taskService.addTask(newTask)
+            .subscribe(function (task) {
+            _this.tasks.push(task);
+            _this.title = '';
+        });
     };
     TasksComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'tasks',
-            templateUrl: "tasks.component.html",
+            templateUrl: 'tasks.component.html'
         }), 
         __metadata('design:paramtypes', [task_service_1.TaskService])
     ], TasksComponent);

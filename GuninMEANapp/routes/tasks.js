@@ -33,7 +33,7 @@ router.get('/task/:id', function (req, res, next) {
 //to save task -- handle a POST request
 router.post('/task', function (req, res, next) {
   var task = req.body;
-  if (!task.title || (task.isDone + '')) {
+  if (!task.title || !(task.isDone + '')) {
     req.status(400);
     req.json({
       "error": "Invalid Data"
