@@ -13,6 +13,10 @@ var task_service_1 = require('../../services/task.service');
 var TasksComponent = (function () {
     function TasksComponent(taskService) {
         this.taskService = taskService;
+        this.taskService.getTasks()
+            .subscribe(function (tasks) {
+            console.log(tasks);
+        });
     }
     TasksComponent = __decorate([
         core_1.Component({
