@@ -52,6 +52,9 @@ var TasksComponent = (function () {
             _this.tasks = tasks;
         });
     }
+    // for each of the following function we need to reflect the changes 
+    // in servie.ts ( to interact with the db) 
+    // and tasks.component.html to output it to the screen
     TasksComponent.prototype.addTask = function (event) {
         var _this = this;
         event.preventDefault();
@@ -75,6 +78,16 @@ var TasksComponent = (function () {
                     }
                 }
             }
+        });
+    };
+    TasksComponent.prototype.updateStatus = function (task) {
+        var _task = {
+            _id: task._id,
+            title: task.title,
+            isDone: !task.isDone
+        };
+        this.taskService.updateStatus(_task).subscribe(function (data) {
+            task.isDone = !task.isDone;
         });
     };
     TasksComponent = __decorate([

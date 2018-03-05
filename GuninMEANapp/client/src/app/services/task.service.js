@@ -22,7 +22,7 @@ var TaskService = (function () {
             .map(function (res) { return res.json(); });
     };
     TaskService.prototype.addTask = function (newTask) {
-        console.log(newTask);
+        // console.log(newTask);
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.post('http://localhost:3000/api/task', JSON.stringify(newTask), { headers: headers })
@@ -30,6 +30,12 @@ var TaskService = (function () {
     };
     TaskService.prototype.deleteTask = function (id) {
         return this.http.delete('http://localhost:3000/api/task/' + id)
+            .map(function (res) { return res.json(); });
+    };
+    TaskService.prototype.updateStatus = function (task) {
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.put('/api/task/' + task._id, JSON.stringify(task), { headers: headers })
             .map(function (res) { return res.json(); });
     };
     TaskService = __decorate([

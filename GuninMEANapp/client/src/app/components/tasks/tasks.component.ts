@@ -61,7 +61,9 @@ export class TasksComponent {
         this.tasks = tasks;
       });
   }
-
+  // for each of the following function we need to reflect the changes 
+  // in servie.ts ( to interact with the db) 
+  // and tasks.component.html to output it to the screen
   addTask(event) {
     event.preventDefault();
     var newTask = {
@@ -86,6 +88,19 @@ export class TasksComponent {
           }
         }
       }
+    });
+  }
+
+
+  updateStatus(task) {
+    var _task = {
+      _id: task._id,
+      title: task.title,
+      isDone: !task.isDone
+    };
+
+    this.taskService.updateStatus(_task).subscribe(data => {
+      task.isDone = !task.isDone;
     });
   }
 }
