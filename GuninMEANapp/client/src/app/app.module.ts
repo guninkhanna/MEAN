@@ -5,10 +5,10 @@ import { AppComponent } from './app.component';
 import { TasksComponent } from './components/tasks/tasks.component';
 
 import { HttpModule } from '@angular/http';
-
+import { FormsModule } from '@angular/forms'
 
 @NgModule({
-  imports: [BrowserModule, HttpModule],
+  imports: [BrowserModule, HttpModule, FormsModule],
   declarations: [AppComponent, TasksComponent],
   bootstrap: [AppComponent]
 })

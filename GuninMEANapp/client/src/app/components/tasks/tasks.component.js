@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var task_service_1 = require('../../services/task.service');
+// import { isDate } from 'util';
 var TasksComponent = (function () {
     function TasksComponent(taskService) {
         var _this = this;
@@ -20,6 +21,14 @@ var TasksComponent = (function () {
             _this.tasks = tasks;
         });
     }
+    TasksComponent.prototype.addTask = function (event) {
+        event.preventDefault();
+        var newTaks = {
+            title: this.title,
+            isDone: false
+        };
+        // this.tasks.push(newTaks); -> shows up but disappers on reload
+    };
     TasksComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
